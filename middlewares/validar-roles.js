@@ -1,5 +1,13 @@
 const {response} = require('express');
 
+const {Role} = require('../models');
+
+const esRoleValido = async (rol = '') => {
+    const existeRol = await Role.findOne({rol});
+    if (!existeRol) {
+        throw new Error(`El rol ${rol} no está registrado en la DB`);
+    }
+};
 
 const esAdminRole = (req, res = response, next) => {
     if (!req.usuario) {
@@ -35,6 +43,7 @@ const tieneRole = (...roles) => (req, res = response, next) => {
 }
 
 module.exports = {
+    esRoleValido,
     esAdminRole,
     tieneRole
 }

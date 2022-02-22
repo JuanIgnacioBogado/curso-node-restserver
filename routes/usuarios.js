@@ -5,10 +5,10 @@ const {check} = require('express-validator');
 const {
     validarCampos,
     validarJWT,
-    tieneRole
+    tieneRole,
+    esRoleValido
 } = require('../middlewares');
 const {
-    esRoleValido,
     emailExiste,
     existeUsuarioPorId
 } = require('../helpers/db-validators');
