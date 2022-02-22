@@ -30,8 +30,11 @@
             // Google token: ID_TOKEN
             // console.log('id_token', response.credential);
             const body = {id_token: response.credential};
+            const uri = (location.hostname.includes('localhost'))
+                ? 'http://localhost:8080'
+                : 'https://restserver-curso-fer-her.herokuapp.com';
 
-            fetch('http://localhost:8080/api/auth/google', {
+            fetch(`${uri}/api/auth/google`, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
@@ -44,7 +47,7 @@
                     localStorage.setItem('email', res.usuario.correo);
                     location.reload();
                 })
-                .catch(console.warn)
+                .catch(console.warn);
         }
 
         const button = document.getElementById('google_signout');
