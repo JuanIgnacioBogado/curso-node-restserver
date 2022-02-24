@@ -1,17 +1,18 @@
 const {Router} = require('express');
 const {check} = require('express-validator');
 
-
 const {
     validarCampos,
     validarJWT,
     tieneRole,
     esRoleValido
 } = require('../middlewares');
+
 const {
     emailExiste,
     existeUsuarioPorId
 } = require('../helpers/db-validators');
+
 const {
     usuariosGet,
     usuariosPut,
